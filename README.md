@@ -28,3 +28,25 @@ Missing drop-off location IDs: 71,010,112
 Duplicate records: 249,949,739
 
 The dataset contains temporal, categorical, and location-based attributes that can be used to model trip behavior and duration.
+
+Dataset Summary
+Main columns:
+
+dispatching_base_num
+pickup_datetime
+dropOff_datetime
+PUlocationID
+DOlocationID
+SR_Flag
+Affiliated_base_number
+Main exploration results:
+
+Total observations: 317,546,944
+dispatching_base_num unique values: 867
+Affiliated_base_number unique values: 6099
+Missing PUlocationID: 18,393,090
+Missing DOlocationID: 71,010,112
+Missing SR_Flag: 71,544,632
+Missing Affiliated_base_number: 3,760
+Distinct rows: 67,597,205
+Duplicate rows: 249,949,739
