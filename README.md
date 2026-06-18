@@ -34,3 +34,14 @@ The dataset contains temporal, categorical, and location-based attributes that c
 - Missing Affiliated_base_number: 3,760
 - Distinct rows: 67,597,205
 - Duplicate rows: 249,949,739
+
+## Figures
+- Figure 1. Top 10 Pickup Locations. Trip counts for the most frequent pickup locations in the Spark-aggregated dataset.
+- Figure 2. Histogram of Pickup Location IDs. Distribution of pickup location IDs from a Spark sample.
+- Figure 3. Histogram of Trip Duration. Distribution of trip duration after filtering invalid durations.
+- Figure 4. Pickup Hour vs. Trip Duration. Sampled scatter plot showing temporal variation in trip duration.
+- Figure 5. PCA Explained Variance. Individual and cumulative explained variance ratios for the retained principal components.
+- Figure 6. Model Comparison. Accuracy, F1, and AUC across Random Forest, full Logistic Regression, and PCA + Logistic Regression.
+- Figure 7. Prediction Analysis. Example correct classifications, false positives, and false negatives from the test set.
+
+  ## Methods
