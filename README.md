@@ -4,3 +4,27 @@ This study explores New York City for-hire vehicle trip data using Apache Spark 
 By analyzing trip characteristics and travel trends, the project aims to uncover insights that can improve transportation operations. Predictive models built from historical trip data can assist fleet operators in estimating travel times, identifying periods of increased demand, and improving resource utilization. Such analyses also contribute to broader efforts in urban transportation management and evidence-based decision making.
 
 The scale of the data presents significant computational challenges. The 2017 FHV dataset contains more than 317 million records, resulting in data volumes that exceed the practical limits of conventional single-machine processing. Tasks such as transforming temporal variables, generating analytical features, performing large-scale aggregations, and training machine learning models require substantial computing resources. To address these challenges, Apache Spark was used to distribute computation across multiple nodes on SDSC Expanse, enabling efficient processing of the dataset and reducing execution time. This distributed approach provided the scalability necessary to analyze the data reliably and build predictive models on a dataset of this magnitude.
+
+##Dataset
+
+The analysis uses the 2017 NYC For-Hire Vehicle (FHV) trip dataset.
+
+https://www.kaggle.com/datasets/verifiedbysuman/nyc-taxi & https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+
+Primary Variables
+dispatching_base_num
+pickup_datetime
+dropOff_datetime
+PUlocationID
+DOlocationID
+SR_Flag
+Affiliated_base_number
+Dataset Characteristics
+Total observations: 317,546,944
+Unique dispatching bases: 867
+Unique affiliated bases: 6,099
+Missing pickup location IDs: 18,393,090
+Missing drop-off location IDs: 71,010,112
+Duplicate records: 249,949,739
+
+The dataset contains temporal, categorical, and location-based attributes that can be used to model trip behavior and duration.
