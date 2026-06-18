@@ -14,8 +14,8 @@ https://www.kaggle.com/datasets/verifiedbysuman/nyc-taxi & https://www.nyc.gov/s
 The dataset contains temporal, categorical, and location-based attributes that can be used to model trip behavior and duration.
 
 ##Data Exploration
-Main columns:
 
+###Main columns:
 dispatching_base_num
 pickup_datetime
 dropOff_datetime
@@ -23,7 +23,8 @@ PUlocationID
 DOlocationID
 SR_Flag
 Affiliated_base_number
-Main exploration results:
+
+###Main exploration results:
 
 Total observations: 317,546,944
 dispatching_base_num unique values: 867
