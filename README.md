@@ -45,3 +45,69 @@ The dataset contains temporal, categorical, and location-based attributes that c
 - Figure 7. Prediction Analysis. Example correct classifications, false positives, and false negatives from the test set.
 
   ## Methods
+
+### Data Preprocessing and Feature Engineering
+
+
+```
+df = spark.read.parquet(data_path)
+print("Number of observations:", df.count())
+df.printSchema()
+
+categorical_cols = [c for c, dtype in df.dtypes if dtype in ["string", "boolean"]]
+for c in categorical_cols:
+    print(c, df.select(c).distinct().count())
+Preprocessing (using Spark)
+Preprocessing was completed in Spark only. Rows with missing pickup_datetime or dropOff_datetime were removed. A new feature, trip_duration_minutes, was created from the timestamp difference. Invalid durations were filtered out, and a binary label was created:
+
+label = 1 if trip_duration_minutes >= 30
+label = 0 otherwise
+Additional time-based features were engineered:
+
+pickup_hour
+pickup_month
+pickup_dayofweek
+is_weekend
+Missing location IDs were filled with -1.
+
+df_clean = df.dropna(subset=["pickup_datetime", "dropOff_datetime"])
+df_clean = df_clean.withColumn(
+    "trip_duration_minutes",
+    (unix_timestamp(col("dropOff_datetime")) - unix_timestamp(col("pickup_datetime"))) / 60.0
+).filter(
+    (col("trip_duration_minutes") > 0) &
+    (col("trip_duration_minutes") <= 180)
+).withColumn(
+    "label",
+    when(col("trip_duration_minutes") >= 30, 1).otherwise(0)
+)
+```
+
+Key preprocessing steps include:
+
+- Removal of records with missing timestamps
+- Creation of trip duration in minutes
+- Filtering invalid trip durations
+- Construction of a binary classification target
+- Handling missing location identifiers
+- Feature engineering from timestamp information
+
+Generated temporal features include:
+
+- Pickup hour
+- Pickup month
+- Day of week
+- Weekend indicator
+
+### Final modeling features:
+
+PUlocationID
+DOlocationID
+pickup_hour
+pickup_month
+pickup_dayofweek
+is_weekend
+
+### Distributed Model Training
+
+
