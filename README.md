@@ -16,13 +16,13 @@ The dataset contains temporal, categorical, and location-based attributes that c
 ##Data Exploration
 
 ### Main columns:
-dispatching_base_num
-pickup_datetime
-dropOff_datetime
-PUlocationID
-DOlocationID
-SR_Flag
-Affiliated_base_number
+-dispatching_base_num
+-pickup_datetime
+-dropOff_datetime
+-PUlocationID
+-DOlocationID
+-SR_Flag
+-Affiliated_base_number
 
 ### Main exploration results:
 
