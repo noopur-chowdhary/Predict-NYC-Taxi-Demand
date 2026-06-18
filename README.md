@@ -11,25 +11,9 @@ The analysis uses the 2017 NYC For-Hire Vehicle (FHV) trip dataset.
 
 https://www.kaggle.com/datasets/verifiedbysuman/nyc-taxi & https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
-Primary Variables
-dispatching_base_num
-pickup_datetime
-dropOff_datetime
-PUlocationID
-DOlocationID
-SR_Flag
-Affiliated_base_number
-Dataset Characteristics
-Total observations: 317,546,944
-Unique dispatching bases: 867
-Unique affiliated bases: 6,099
-Missing pickup location IDs: 18,393,090
-Missing drop-off location IDs: 71,010,112
-Duplicate records: 249,949,739
-
 The dataset contains temporal, categorical, and location-based attributes that can be used to model trip behavior and duration.
 
-Dataset Summary
+##Data Exploration
 Main columns:
 
 dispatching_base_num
