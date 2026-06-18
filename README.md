@@ -5,7 +5,7 @@ By analyzing trip characteristics and travel trends, the project aims to uncover
 
 The scale of the data presents significant computational challenges. The 2017 FHV dataset contains more than 317 million records, resulting in data volumes that exceed the practical limits of conventional single-machine processing. Tasks such as transforming temporal variables, generating analytical features, performing large-scale aggregations, and training machine learning models require substantial computing resources. To address these challenges, Apache Spark was used to distribute computation across multiple nodes on SDSC Expanse, enabling efficient processing of the dataset and reducing execution time. This distributed approach provided the scalability necessary to analyze the data reliably and build predictive models on a dataset of this magnitude.
 
-##Dataset
+## Dataset
 
 The analysis uses the 2017 NYC For-Hire Vehicle (FHV) trip dataset.
 
@@ -15,7 +15,7 @@ The dataset contains temporal, categorical, and location-based attributes that c
 
 ##Data Exploration
 
-###Main columns:
+### Main columns:
 dispatching_base_num
 pickup_datetime
 dropOff_datetime
@@ -24,7 +24,7 @@ DOlocationID
 SR_Flag
 Affiliated_base_number
 
-###Main exploration results:
+### Main exploration results:
 
 Total observations: 317,546,944
 dispatching_base_num unique values: 867
