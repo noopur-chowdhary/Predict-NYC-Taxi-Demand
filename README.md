@@ -249,5 +249,32 @@ Where:
 | PC1 + PC2 + PC3      | 1.0000               |
 +----------------------+----------------------+
 
+
+Prediction Analysis: PCA + Logistic Regression
+
+The prediction analysis revealed that the PCA + Logistic Regression model struggled to identify positive-class examples (long trips). Most predictions were assigned to the negative class, resulting in a high number of correct negative classifications but poor detection of positive cases.
+
+The confusion matrix for the test set is shown below:
+
+Actual / Predicted	Negative	Positive
+Negative	36,159 (TN)	0 (FP)
+Positive	8,842 (FN)	0 (TP)
+
+Key observations:
+
+The model correctly classified many negative-class examples (short trips).
+No false positives were produced.
+A large number of false negatives occurred, indicating that many long trips were incorrectly predicted as short trips.
+The model failed to identify any positive-class instances, resulting in zero true positives.
+
 ```
+Discussion:
+
+The Random Forest models delivered the strongest results, with RF2 outperforming RF1 across all evaluation metrics. The deeper forest captured more complex relationships in the location and time-based features while maintaining similar training and test performance, indicating good generalization and limited overfitting.
+
+In contrast, the Logistic Regression models performed substantially worse. Although PCA preserved all variance in three principal components, it provided no meaningful improvement over the baseline Logistic Regression model. Both models largely predicted the majority class, resulting in high accuracy but poor detection of long trips.
+
+The confusion matrix highlights this limitation: the PCA + Logistic Regression model predicted only the negative class, producing zero true positives. This demonstrates why accuracy alone can be misleading for imbalanced datasets and why metrics such as F1 score, AUC, and the confusion matrix are essential for evaluation.
+
+Several factors may have limited performance, including duplicate records, missing location values, and a relatively simple feature set. Future work could focus on improving class imbalance handling, engineering richer spatial features, evaluating additional principal components, and testing more advanced models such as Gradient-Boosted Trees or Spark XGBoost.
 
