@@ -111,7 +111,9 @@ is_weekend
 ### Distributed Model Training
 The dataset was split into 70% Training / 15% Validation / 15% Testing sets. Two primary distributed pipelines were evaluated:
 
-Pipeline 1: Random Forest EnsemblesShallow RF Baseline: 20 trees, max depth of 5.  Deep RF Variant: 50 trees, max depth of 10. 
+Pipeline 1:Random Forest Ensembles
+- Shallow RF Baseline: 20 trees, max depth of 5.
+- Deep RF Variant: 50 trees, max depth of 10. 
 
 RF1: numTrees=20, maxDepth=5, maxBins=300
 RF2: numTrees=50, maxDepth=10, maxBins=300
@@ -163,4 +165,89 @@ lr_pca = LogisticRegression(
 
 ```
 
+Evaluation 
+
+```
+## Model 1 Results
+
+### Random Forest 1
+
++------------+----------+----------+--------+
+| Split      | Accuracy | F1 Score |  AUC   |
++------------+----------+----------+--------+
+| Train      | 0.8118   | 0.7430   | 0.6760 |
+| Validation | 0.8109   | 0.7417   | 0.6726 |
+| Test       | 0.8114   | 0.7426   | 0.6753 |
++------------+----------+----------+--------+
+
+### Random Forest 2
+
++------------+----------+----------+--------+
+| Split      | Accuracy | F1 Score |  AUC   |
++------------+----------+----------+--------+
+| Train      | 0.8310   | 0.7887   | 0.7118 |
+| Validation | 0.8291   | 0.7869   | 0.7066 |
+| Test       | 0.8293   | 0.7863   | 0.7084 |
++------------+----------+----------+--------+
+
+### Random Forest 2 Confusion Matrix (Test Set)
+
++----------------------+------------+------------+
+| Actual \ Predicted   | Negative   | Positive   |
++----------------------+------------+------------+
+| Negative             | 141,358    | 2,234      |
+| Positive             | 28,273     | 6,894      |
++----------------------+------------+------------+
+
+Where:
+- TN = 141,358
+- FP = 2,234
+- FN = 28,273
+- TP = 6,894
+
+---
+
+## Model 2 Results
+
+### Full Logistic Regression
+
++------------+----------+----------+--------+
+| Split      | Accuracy | F1 Score |  AUC   |
++------------+----------+----------+--------+
+| Train      | 0.8036   | 0.7161   | 0.5971 |
+| Validation | 0.8014   | 0.7130   | 0.5987 |
+| Test       | 0.8035   | 0.7160   | 0.6037 |
++------------+----------+----------+--------+
+
+### PCA + Logistic Regression
+
++------------+----------+----------+--------+
+| Split      | Accuracy | F1 Score |  AUC   |
++------------+----------+----------+--------+
+| Train      | 0.8036   | 0.7161   | 0.5971 |
+| Validation | 0.8014   | 0.7130   | 0.5986 |
+| Test       | 0.8035   | 0.7160   | 0.6036 |
++------------+----------+----------+--------+
+
+### PCA Explained Variance
+
++-----------+--------------------+
+| Component | Explained Variance |
++-----------+--------------------+
+| PC1       | 0.3478             |
+| PC2       | 0.3352             |
+| PC3       | 0.3170             |
++-----------+--------------------+
+
+### Cumulative Explained Variance
+
++----------------------+----------------------+
+| Components Included  | Cumulative Variance  |
++----------------------+----------------------+
+| PC1                  | 0.3478               |
+| PC1 + PC2            | 0.6830               |
+| PC1 + PC2 + PC3      | 1.0000               |
++----------------------+----------------------+
+
+```
 
