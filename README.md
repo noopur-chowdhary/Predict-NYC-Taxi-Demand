@@ -109,9 +109,9 @@ pickup_dayofweek
 is_weekend
 
 ### Distributed Model Training
+The dataset was split into 70% Training / 15% Validation / 15% Testing sets. Two primary distributed pipelines were evaluated:
 
-Model 1: First Distributed Model
-The first distributed model was a Spark RandomForestClassifier. Two configurations were tested:
+Pipeline 1: Random Forest EnsemblesShallow RF Baseline: 20 trees, max depth of 5.  Deep RF Variant: 50 trees, max depth of 10. 
 
 RF1: numTrees=20, maxDepth=5, maxBins=300
 RF2: numTrees=50, maxDepth=10, maxBins=300
