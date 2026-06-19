@@ -46,7 +46,7 @@ The dataset contains temporal, categorical, and location-based attributes that c
 
   ## Methods
 
-### Data Preprocessing and Feature Engineering
+  ### Data Preprocessing and Feature Engineering
 
 
 ```
@@ -109,5 +109,58 @@ pickup_dayofweek
 is_weekend
 
 ### Distributed Model Training
+
+Model 1: First Distributed Model
+The first distributed model was a Spark RandomForestClassifier. Two configurations were tested:
+
+RF1: numTrees=20, maxDepth=5, maxBins=300
+RF2: numTrees=50, maxDepth=10, maxBins=300
+
+
+```rf2 = RandomForestClassifier(
+    labelCol="label",
+    featuresCol="features",
+    numTrees=50,
+    maxDepth=10,
+    maxBins=300,
+    seed=42
+)
+```
+Pipeline 2-PCA + Logistic Regression
+Compares a full-feature baseline Logistic Regression model against an unsupervised PCA system that compresses features into the 3 most significant latent components before classification.
+- Standardization: Features were normalized using StandardScaler.
+- Baeline model-A baseline Logistic Regression model was trained on the full standardized feature set
+- Dimensionality Reduction: Principal Component Analysis (PCA) condensed the feature space to the 3 most significant components, retaining 99.9% of cumulative data variance.
+- Classification: A distributed L2-regularized LogisticRegression model was trained on the PCA components.
+  
+ The processed Spark sample had 1,193,817 rows with split sizes:
+ - Train: 836,353
+ - Validation: 178,705
+ - Test: 178,759
+
+
+For the final PCA workflow, the sampled class counts were:
+
+label = 0: 240,122
+label = 1: 58,804
+Split sizes:
+Train: 209,266
+Validation: 44,659
+Test: 45,001
+
+
+```
+
+k = 3
+pca = PCA(k=3, inputCol="features_scaled", outputCol="pca_features")
+
+lr_pca = LogisticRegression(
+    labelCol="label",
+    featuresCol="pca_features",
+    maxIter=20,
+    regParam=0.01,
+    elasticNetParam=0.0
+
+```
 
 
